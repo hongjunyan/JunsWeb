@@ -73,6 +73,7 @@
       <h1>HongJun Yan</h1>
       <h2>A person who is passionate about NLP</h2>
       <a href="about.html" class="btn-about">About Me</a>
+	  <button type="button" id="parsebutton" class="btn btn-secondary">Parse Text</button>
     </div>
   </section><!-- End Hero -->
 
@@ -109,7 +110,31 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-
+  <script type="text/javascript">
+  $(document).ready(function(){
+  trigger();
+  });
+  var trigger = () => {
+        fetch("https://jun-service.herokuapp.com/healthcheck", {
+            method: 'get',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+        }).then(function checkStatus(response) {
+            if (response.status >= 200 && response.status < 300){
+                return response.json();
+            }
+            else {
+                var error = new Error(response.statusText)
+                error.response = response;
+                throw error;
+            }
+        }).then(function(data) {
+			console.log(data['ans']);
+        })
+    }
+  </script>
 </body>
 
 </html>
