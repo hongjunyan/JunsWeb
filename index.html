@@ -10,7 +10,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/coffee.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -73,7 +73,6 @@
       <h1>HongJun Yan</h1>
       <h2>A person who is passionate about NLP</h2>
       <a href="about.html" class="btn-about">About Me</a>
-	  <button type="button" id="parsebutton" class="btn btn-secondary">Parse Text</button>
     </div>
   </section><!-- End Hero -->
 
@@ -112,9 +111,9 @@
   <script src="assets/js/main.js"></script>
   <script type="text/javascript">
   $(document).ready(function(){
-  trigger();
+  healthcheck(); // check the status of server or raise up the service
   });
-  var trigger = () => {
+  var healthcheck = () => {
         fetch("https://jun-service.herokuapp.com/healthcheck", {
             method: 'get',
             headers: {
